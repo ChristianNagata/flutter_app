@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_app/screens/transferencia/lista.dart';
+import 'package:flutter_app/screens/contacts_list.dart';
+import 'package:flutter_app/screens/dashboard.dart';
 
 void main() {
   runApp(const BytebankApp());
@@ -11,8 +12,10 @@ class BytebankApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      theme: ThemeData.light(),
-      home: ListaTransferencias(),
+      theme: ThemeData(
+        primaryColor: Colors.green,
+      ),
+      home: const Dashboard(),
       debugShowCheckedModeBanner: true,
     );
   }

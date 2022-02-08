@@ -9,7 +9,6 @@ const _rotuloCampoNumeroConta = 'Número da conta';
 const _dicaCampoNumeroConta = '0000';
 const _textoBotaoConfirmar = Text('Confirmar');
 
-
 class FormularioTransferencia extends StatefulWidget {
   const FormularioTransferencia({Key? key}) : super(key: key);
 
@@ -21,35 +20,32 @@ class FormularioTransferencia extends StatefulWidget {
 }
 
 class FormularioTransferenciaState extends State<FormularioTransferencia> {
-
-  final TextEditingController _controladorCampoNumeroConta = TextEditingController();
+  final TextEditingController _controladorCampoNumeroConta =
+      TextEditingController();
   final TextEditingController _controladorCampoValor = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: _tituloAppBar,
+      appBar: AppBar(
+        title: _tituloAppBar,
       ),
       body: SingleChildScrollView(
         child: Column(
           children: [
-
             Editor(
-                _controladorCampoNumeroConta,
-                _rotuloCampoNumeroConta,
-                _dicaCampoNumeroConta
+              _controladorCampoNumeroConta,
+              _rotuloCampoNumeroConta,
+              _dicaCampoNumeroConta,
             ),
             Editor(
-                _controladorCampoValor,
-                _rotuloCampoValor,
-                _dicaCampoValor,
-                Icons.monetization_on
+              _controladorCampoValor,
+              _rotuloCampoValor,
+              _dicaCampoValor,
+              Icons.monetization_on,
             ),
-
             ElevatedButton(
-              onPressed: () {
-                _criaTransferencia(context);
-              },
+              onPressed: () => _criaTransferencia(context),
               child: _textoBotaoConfirmar,
             ),
           ],
@@ -57,6 +53,7 @@ class FormularioTransferenciaState extends State<FormularioTransferencia> {
       ),
     );
   }
+
   void _criaTransferencia(BuildContext context) {
     final int? numeroConta = int.tryParse(_controladorCampoNumeroConta.text);
     final double? valor = double.tryParse(_controladorCampoValor.text);

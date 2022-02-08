@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 
 class Editor extends StatelessWidget {
-
   final TextEditingController _controlador;
   final String _rotulo;
   final String _dica;
@@ -14,9 +13,7 @@ class Editor extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.all(16.0),
       child: TextField(
-        style: const TextStyle(
-            fontSize: 24.0
-        ),
+        style: const TextStyle(fontSize: 24.0),
         decoration: InputDecoration(
           icon: _icone != null ? Icon(_icone) : null,
           labelText: _rotulo,
