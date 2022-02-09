@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_app/models/contact.dart';
 import 'package:flutter_app/screens/contact_form.dart';
 import 'package:flutter_app/screens/contacts_list.dart';
 import 'package:flutter_app/screens/dashboard.dart';
+
+import 'database/app_database.dart';
 
 void main() {
   runApp(const BytebankApp());
