@@ -23,7 +23,7 @@ class Dashboard extends StatelessWidget {
                   onTap: () {
                     Navigator.of(context).push(MaterialPageRoute(builder: (context) => ContactsList()));
                   },
-                  child: Container(
+                  child: SizedBox(
                     height: 90,
                     width: 120,
                     child: Column(
