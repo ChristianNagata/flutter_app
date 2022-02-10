@@ -62,7 +62,8 @@ class Itemtransferencia extends StatelessWidget {
             color: Colors.green,
           ),
           title: Text('R\$ ${_transferencia.valor.toString()}'),
-          subtitle: Text('Conta: ${_transferencia.numeroConta.toString()}'),
+          subtitle: Text('Nome: ${_transferencia.nomeRecebedor.toString()} - '
+              'conta: ${_transferencia.numeroConta.toString()}'),
         ),
       );
 }
