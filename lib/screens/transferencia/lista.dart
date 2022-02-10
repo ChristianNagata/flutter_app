@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_app/database/dao/transferencia_dao.dart';
 
 import '../../models/transferencia.dart';
 import 'formulario.dart';
@@ -13,28 +14,57 @@ class ListaTransferencias extends StatefulWidget {
 }
 
 class ListaTransferenciasState extends State<ListaTransferencias> {
+  final TransferenciaDao _dao = TransferenciaDao();
+
   @override
   Widget build(BuildContext context) => Scaffold(
         appBar: AppBar(
           title: _tituloAppBar,
           backgroundColor: Theme.of(context).backgroundColor,
         ),
-        body: ListView.builder(
-          itemCount: widget._transferencias.length,
-          itemBuilder: (context, index) {
-            final transferencia = widget._transferencias[index];
-            return Itemtransferencia(transferencia);
+        body: FutureBuilder<List<Transferencia>>(
+          initialData: const [],
+          future: _dao.findAllTransferencias(),
+          builder: (context, snapshot) {
+            switch (snapshot.connectionState) {
+              case ConnectionState.none:
+                break;
+              case ConnectionState.waiting:
+                break;
+              case ConnectionState.active:
+                break;
+              case ConnectionState.done:
+                final List<Transferencia>? transferencias = snapshot.data;
+                if (transferencias != null) {
+                  return ListView.builder(
+                    itemBuilder: (context, index) {
+                      final Transferencia transferencia = transferencias[index];
+                      return Itemtransferencia(transferencia);
+                    },
+                    itemCount: transferencias.length,
+                  );
+                }
+                break;
+            }
+            return const Text('Unknown error!');
           },
         ),
         floatingActionButton: FloatingActionButton(
           child: const Icon(Icons.add),
           onPressed: () {
-            Navigator.push(
-                context,
-                MaterialPageRoute(
-                    builder: (context) =>
-                        const FormularioTransferencia())).then(
-                (transferenciaRecebida) => _atualiza(transferenciaRecebida));
+            Navigator.of(context)
+                .push(
+              MaterialPageRoute(
+                builder: (context) => const FormularioTransferencia(),
+              ),
+            )
+                .then(
+              (value) {
+                setState(() {
+                  widget.createState();
+                });
+              },
+            );
           },
           backgroundColor: Theme.of(context).primaryColor,
         ),
