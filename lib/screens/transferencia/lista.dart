@@ -17,6 +17,7 @@ class ListaTransferenciasState extends State<ListaTransferencias> {
   Widget build(BuildContext context) => Scaffold(
         appBar: AppBar(
           title: _tituloAppBar,
+          backgroundColor: Theme.of(context).backgroundColor,
         ),
         body: ListView.builder(
           itemCount: widget._transferencias.length,
@@ -35,6 +36,7 @@ class ListaTransferenciasState extends State<ListaTransferencias> {
                         const FormularioTransferencia())).then(
                 (transferenciaRecebida) => _atualiza(transferenciaRecebida));
           },
+          backgroundColor: Theme.of(context).primaryColor,
         ),
       );
 

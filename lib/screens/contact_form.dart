@@ -2,6 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_app/database/dao/contact_dao.dart';
 import '../models/contact.dart';
 
+const _tituloAppBar = Text('Novo contato');
+const _labelNome = 'Nome completo';
+const _labelNumeroConta = 'Número da conta';
+const _textoBotao = Text('Criar');
+
 class ContactForm extends StatefulWidget {
   const ContactForm({Key? key}) : super(key: key);
 
@@ -19,7 +24,8 @@ class _ContactFormState extends State<ContactForm> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Novo contato'),
+        title: _tituloAppBar,
+        backgroundColor: Theme.of(context).backgroundColor,
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
@@ -28,7 +34,7 @@ class _ContactFormState extends State<ContactForm> {
             TextField(
               controller: _nameController,
               decoration: const InputDecoration(
-                labelText: 'Nome completo',
+                labelText: _labelNome,
               ),
               style: const TextStyle(
                 fontSize: 24.0,
@@ -39,7 +45,7 @@ class _ContactFormState extends State<ContactForm> {
               child: TextField(
                 controller: _accountNumberController,
                 decoration: const InputDecoration(
-                  labelText: 'Número da conta',
+                  labelText: _labelNumeroConta,
                 ),
                 style: const TextStyle(
                   fontSize: 24.0,
@@ -60,7 +66,7 @@ class _ContactFormState extends State<ContactForm> {
                         Contact(0, name, accountNumber!);
                     _dao.save(newContact).then((id) => Navigator.pop(context));
                   },
-                  child: const Text('Criar'),
+                  child: _textoBotao,
                 ),
               ),
             )

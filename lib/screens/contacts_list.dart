@@ -15,6 +15,7 @@ class _ContactsListState extends State<ContactsList> {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Contacts'),
+        backgroundColor: Theme.of(context).backgroundColor,
       ),
       body: FutureBuilder<List<Contact>>(
         initialData: const [],
@@ -55,6 +56,7 @@ class _ContactsListState extends State<ContactsList> {
             });
           });
         },
+        backgroundColor: Theme.of(context).primaryColor,
         child: const Icon(Icons.add),
       ),
     );
