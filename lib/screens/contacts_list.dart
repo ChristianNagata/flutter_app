@@ -1,15 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app/database/dao/contact_dao.dart';
 import 'package:flutter_app/screens/contact_form.dart';
+import 'package:flutter_app/screens/transferencia/formulario.dart';
 import '../models/contact.dart';
 
 class ContactsList extends StatefulWidget {
+  const ContactsList({Key? key}) : super(key: key);
+
   @override
   State<ContactsList> createState() => _ContactsListState();
 }
 
 class _ContactsListState extends State<ContactsList> {
   final ContactDao _dao = ContactDao();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -46,11 +50,13 @@ class _ContactsListState extends State<ContactsList> {
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          Navigator.of(context).push(
+          Navigator.of(context)
+              .push(
             MaterialPageRoute(
               builder: (context) => const ContactForm(),
             ),
-          ).then((value) {
+          )
+              .then((value) {
             setState(() {
               widget.createState();
             });
@@ -80,6 +86,10 @@ class _ContactItem extends StatelessWidget {
           contact.accountNumber.toString(),
           style: const TextStyle(fontSize: 16.0),
         ),
+        onTap: () {
+          Navigator.of(context).push(MaterialPageRoute(
+              builder: (context) => const FormularioTransferencia()));
+        },
       ),
     );
   }

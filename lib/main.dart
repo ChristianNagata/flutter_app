@@ -15,7 +15,7 @@ class BytebankApp extends StatelessWidget {
         primaryColor: Colors.green,
         backgroundColor: Colors.green,
       ),
-      home: Dashboard(),
+      home: const Dashboard(),
       debugShowCheckedModeBanner: true,
     );
   }

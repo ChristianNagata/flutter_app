@@ -7,8 +7,10 @@ const _textoBotaoTransferencias = 'Transferências';
 const _titleAppBar = Text('Dashboard');
 
 class Dashboard extends StatelessWidget {
-  final ContactsList _contactsList = ContactsList();
-  final ListaTransferencias _listaTransferencias = ListaTransferencias();
+  final ContactsList _contactsList = const ContactsList();
+  final ListaTransferencias _listaTransferencias = const ListaTransferencias();
+
+  const Dashboard({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

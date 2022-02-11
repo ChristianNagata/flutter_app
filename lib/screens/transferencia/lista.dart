@@ -7,7 +7,7 @@ import 'formulario.dart';
 const _tituloAppBar = Text('Transferências');
 
 class ListaTransferencias extends StatefulWidget {
-  final List<Transferencia> _transferencias = [];
+  const ListaTransferencias({Key? key}) : super(key: key);
 
   @override
   State<StatefulWidget> createState() => ListaTransferenciasState();
