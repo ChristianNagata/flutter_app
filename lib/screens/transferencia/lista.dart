@@ -58,25 +58,15 @@ class ListaTransferenciasState extends State<ListaTransferencias> {
                 builder: (context) => const FormularioTransferencia(),
               ),
             )
-                .then(
-              (value) {
-                setState(() {
-                  widget.createState();
-                });
-              },
-            );
+                .then((value) {
+              setState(() {
+                widget.createState();
+              });
+            });
           },
           backgroundColor: Theme.of(context).primaryColor,
         ),
       );
-
-  void _atualiza(Transferencia? transferenciaRecebida) {
-    if (transferenciaRecebida != null) {
-      setState(() {
-        widget._transferencias.add(transferenciaRecebida);
-      });
-    }
-  }
 }
 
 class Itemtransferencia extends StatelessWidget {

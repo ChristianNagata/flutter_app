@@ -1,5 +1,4 @@
 import 'package:sqflite/sqflite.dart';
-
 import '../../models/contact.dart';
 import '../app_database.dart';
 
