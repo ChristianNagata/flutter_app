@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_app/database/dao/transferencia_dao.dart';
 
 import '../../models/transferencia.dart';
 import 'formulario.dart';
@@ -14,8 +13,6 @@ class ListaTransferencias extends StatefulWidget {
 }
 
 class ListaTransferenciasState extends State<ListaTransferencias> {
-  final TransferenciaDao _dao = TransferenciaDao();
-
   @override
   Widget build(BuildContext context) => Scaffold(
         appBar: AppBar(
@@ -25,7 +22,6 @@ class ListaTransferenciasState extends State<ListaTransferencias> {
         ),
         body: FutureBuilder<List<Transferencia>>(
           initialData: const [],
-          future: _dao.findAllTransferencias(),
           builder: (context, snapshot) {
             switch (snapshot.connectionState) {
               case ConnectionState.none:
@@ -83,8 +79,8 @@ class Itemtransferencia extends StatelessWidget {
             color: Colors.green,
           ),
           title: Text('R\$ ${_transferencia.valor.toString()}'),
-          subtitle: Text('Nome: ${_transferencia.nomeRecebedor.toString()} - '
-              'conta: ${_transferencia.numeroConta.toString()}'),
+          subtitle:
+              Text('conta: ${_transferencia.contact.accountNumber.toString()}'),
         ),
       );
 }

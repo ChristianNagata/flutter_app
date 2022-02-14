@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_app/database/dao/transferencia_dao.dart';
+import 'package:flutter_app/models/contact.dart';
 import '../../components/editor.dart';
 import '../../models/transferencia.dart';
 
@@ -31,7 +31,6 @@ class FormularioTransferenciaState extends State<FormularioTransferencia> {
       TextEditingController();
   final TextEditingController _controladorCampoNome = TextEditingController();
   final TextEditingController _controladorCampoValor = TextEditingController();
-  final TransferenciaDao _dao = TransferenciaDao();
 
   @override
   Widget build(BuildContext context) {
@@ -74,12 +73,12 @@ class FormularioTransferenciaState extends State<FormularioTransferencia> {
   }
 
   void _criaTransferencia(BuildContext context) {
-    final String nomeRecebedor = _controladorCampoNome.text;
     final int? numeroConta = int.tryParse(_controladorCampoNumeroConta.text);
     final double? valor = double.tryParse(_controladorCampoValor.text);
+    final String nome = _controladorCampoNome.text;
     if (numeroConta != null && valor != null) {
-      final transferenciaCriada = Transferencia(nomeRecebedor, valor, numeroConta);
-      _dao.saveTransferencia(transferenciaCriada).then((id) => Navigator.pop(context));
+      final transferenciaCriada = Transferencia(valor, Contact(0, nome, numeroConta));
+      Navigator.pop(context);
     }
   }
 }

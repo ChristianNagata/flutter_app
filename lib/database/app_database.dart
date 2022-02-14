@@ -1,5 +1,4 @@
 import 'package:flutter_app/database/dao/contact_dao.dart';
-import 'package:flutter_app/database/dao/transferencia_dao.dart';
 import 'package:path/path.dart';
 import 'package:sqflite/sqflite.dart';
 
@@ -10,7 +9,6 @@ Future<Database> getDatabase() async {
     path,
     onCreate: (db, version) {
       db.execute(ContactDao.tableSQL);
-      db.execute(TransferenciaDao.tableSQL);
     },
     version: 1,
     // onDowngrade: onDatabaseDowngradeDelete,

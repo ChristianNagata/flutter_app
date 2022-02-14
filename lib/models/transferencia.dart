@@ -1,16 +1,16 @@
+import 'package:flutter_app/models/contact.dart';
+
 class Transferencia {
-  final String nomeRecebedor;
   final double valor;
-  final int numeroConta;
+  final Contact contact;
 
   Transferencia(
-    this.nomeRecebedor,
     this.valor,
-    this.numeroConta,
+    this.contact,
   );
 
   @override
   String toString() {
-    return 'Transferencia{nomeRecebedor: $nomeRecebedor, valor: $valor, numeroConta: $numeroConta}';
+    return 'Transferencia{valor: $valor, contact: $contact}';
   }
 }
