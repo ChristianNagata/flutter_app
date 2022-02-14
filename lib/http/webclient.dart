@@ -26,21 +26,23 @@ class LoggingInterceptor implements InterceptorContract {
 Future<List<Transferencia>> findAll() async {
   Client client = InterceptedClient.build(interceptors: [LoggingInterceptor()]);
 
-  final Response response = await client.get(Uri.http(
-    '192.168.0.103:8080',
-    'transactions',
-  ));
+  final Response response = await client
+      .get(Uri.http(
+        '192.168.0.103:8080',
+        'transactions',
+      ))
+      .timeout(const Duration(seconds: 5));
 
   final List<dynamic> decodeJson = jsonDecode(response.body);
   final List<Transferencia> transactions = [];
   for (Map<String, dynamic> element in decodeJson) {
     final Transferencia transaction = Transferencia(
-        element['value'],
-        Contact(
-          0,
-          element['contact']['name'],
-          element['contact']['accountNumber'],
-        ),
+      element['value'],
+      Contact(
+        0,
+        element['contact']['name'],
+        element['contact']['accountNumber'],
+      ),
     );
     transactions.add(transaction);
   }

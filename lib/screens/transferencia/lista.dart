@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_app/components/centered_message.dart';
+import 'package:flutter_app/http/webclient.dart';
 
 import '../../models/transferencia.dart';
 import 'formulario.dart';
@@ -21,6 +23,7 @@ class ListaTransferenciasState extends State<ListaTransferencias> {
           backgroundColor: Theme.of(context).backgroundColor,
         ),
         body: FutureBuilder<List<Transferencia>>(
+          future: findAll(),
           initialData: const [],
           builder: (context, snapshot) {
             switch (snapshot.connectionState) {
@@ -31,19 +34,23 @@ class ListaTransferenciasState extends State<ListaTransferencias> {
               case ConnectionState.active:
                 break;
               case ConnectionState.done:
-                final List<Transferencia>? transferencias = snapshot.data;
-                if (transferencias != null) {
-                  return ListView.builder(
-                    itemBuilder: (context, index) {
-                      final Transferencia transferencia = transferencias[index];
-                      return Itemtransferencia(transferencia);
-                    },
-                    itemCount: transferencias.length,
-                  );
+                if (snapshot.hasData) {
+                  final List<Transferencia>? transferencias = snapshot.data;
+                  if (transferencias != null) {
+                    return ListView.builder(
+                      itemBuilder: (context, index) {
+                        final Transferencia transferencia =
+                            transferencias[index];
+                        return Itemtransferencia(transferencia);
+                      },
+                      itemCount: transferencias.length,
+                    );
+                  }
                 }
+                return CenteredMessage('No transactions founded');
                 break;
             }
-            return const Text('Unknown error!');
+            return CenteredMessage('Unknown Error');
           },
         ),
         floatingActionButton: FloatingActionButton(
