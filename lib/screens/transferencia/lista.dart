@@ -19,6 +19,7 @@ class ListaTransferenciasState extends State<ListaTransferencias> {
   @override
   Widget build(BuildContext context) => Scaffold(
         appBar: AppBar(
+          elevation: 0.0,
           title: _tituloAppBar,
           backgroundColor: Theme.of(context).backgroundColor,
         ),

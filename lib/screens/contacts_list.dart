@@ -18,6 +18,7 @@ class _ContactsListState extends State<ContactsList> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        elevation: 0.0,
         title: const Text('Transferir'),
         backgroundColor: Theme.of(context).backgroundColor,
       ),

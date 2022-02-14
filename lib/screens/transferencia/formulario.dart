@@ -37,6 +37,7 @@ class FormularioTransferenciaState extends State<FormularioTransferencia> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        elevation: 0.0,
         title: _tituloAppBar,
         backgroundColor: Theme.of(context).backgroundColor,
       ),

@@ -13,6 +13,7 @@ class Dashboard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        elevation: 0.0,
         title: _titleAppBar,
         backgroundColor: Theme.of(context).backgroundColor,
       ),
