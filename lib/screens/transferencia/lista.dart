@@ -67,7 +67,7 @@ class Itemtransferencia extends StatelessWidget {
             Icons.monetization_on,
             color: Colors.green,
           ),
-          title: Text('R\$ ${_transferencia.valor.toString()}'),
+          title: Text('R\$ ${_transferencia.value.toString()}'),
           subtitle:
               Text('conta: ${_transferencia.contact.accountNumber.toString()}'),
         ),
