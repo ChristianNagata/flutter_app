@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app/components/centered_message.dart';
-import 'package:flutter_app/http/webclient.dart';
-
+import 'package:flutter_app/http/webclients/transaction_webclient.dart';
 import '../../models/transferencia.dart';
-import 'formulario.dart';
 
 const _tituloAppBar = Text('Transferências');
 
@@ -15,6 +13,8 @@ class ListaTransferencias extends StatefulWidget {
 }
 
 class ListaTransferenciasState extends State<ListaTransferencias> {
+  final TransactionWebClient _webClient = TransactionWebClient();
+
   @override
   Widget build(BuildContext context) => Scaffold(
         appBar: AppBar(
@@ -23,7 +23,7 @@ class ListaTransferenciasState extends State<ListaTransferencias> {
           backgroundColor: Theme.of(context).backgroundColor,
         ),
         body: FutureBuilder<List<Transferencia>>(
-          future: findAll(),
+          future: _webClient.findAll(),
           initialData: const [],
           builder: (context, snapshot) {
             switch (snapshot.connectionState) {
@@ -47,28 +47,10 @@ class ListaTransferenciasState extends State<ListaTransferencias> {
                     );
                   }
                 }
-                return CenteredMessage('No transactions founded');
-                break;
+                return CenteredMessage('No transactions founded', icon: Icons.warning,);
             }
-            return CenteredMessage('Unknown Error');
+            return CenteredMessage('Unknown Error', icon: Icons.warning,);
           },
-        ),
-        floatingActionButton: FloatingActionButton(
-          child: const Icon(Icons.add),
-          onPressed: () {
-            Navigator.of(context)
-                .push(
-              MaterialPageRoute(
-                builder: (context) => const FormularioTransferencia(),
-              ),
-            )
-                .then((value) {
-              setState(() {
-                widget.createState();
-              });
-            });
-          },
-          backgroundColor: Theme.of(context).primaryColor,
         ),
       );
 }
