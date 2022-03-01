@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_app/components/transaction_auth_dialog.dart';
 import 'package:flutter_app/screens/dashboard.dart';
 
 void main() {
@@ -15,7 +16,7 @@ class BytebankApp extends StatelessWidget {
         primaryColor: Colors.green,
         backgroundColor: Colors.green,
       ),
-      home: const Dashboard(),
+      home: const TransactionAuthDialog(),
       debugShowCheckedModeBanner: true,
     );
   }
