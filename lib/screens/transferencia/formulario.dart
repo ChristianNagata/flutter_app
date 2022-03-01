@@ -14,7 +14,7 @@ const _textoBotaoConfirmar = Text('Confirmar');
 class FormularioTransferencia extends StatefulWidget {
   final Contact contact;
 
-  FormularioTransferencia(this.contact, {Key? key}) : super(key: key);
+  const FormularioTransferencia(this.contact, {Key? key}) : super(key: key);
 
   @override
   State<StatefulWidget> createState() => _FormularioTransferenciaState();

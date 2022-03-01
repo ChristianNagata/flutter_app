@@ -83,7 +83,7 @@ class _ContactItem extends StatelessWidget {
   final Contact contact;
   final Function onClick;
 
-  _ContactItem(this.contact, {required this.onClick});
+  const _ContactItem(this.contact, {required this.onClick});
 
   @override
   Widget build(BuildContext context) {

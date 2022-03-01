@@ -47,9 +47,9 @@ class ListaTransferenciasState extends State<ListaTransferencias> {
                     );
                   }
                 }
-                return CenteredMessage('No transactions founded', icon: Icons.warning,);
+                return const CenteredMessage('No transactions founded', icon: Icons.warning,);
             }
-            return CenteredMessage('Unknown Error', icon: Icons.warning,);
+            return const CenteredMessage('Unknown Error', icon: Icons.warning,);
           },
         ),
       );

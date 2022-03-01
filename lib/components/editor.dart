@@ -7,7 +7,7 @@ class Editor extends StatelessWidget {
   final TextInputType _inputType;
   final IconData? _icone;
 
-  Editor(this._controlador, this._rotulo, this._dica, this._inputType, [this._icone]);
+  const Editor(this._controlador, this._rotulo, this._dica, this._inputType, [this._icone]);
 
   @override
   Widget build(BuildContext context) {

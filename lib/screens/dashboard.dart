@@ -56,7 +56,7 @@ class _FeatureItem extends StatelessWidget {
   final IconData icone;
   final Function onClick;
 
-  _FeatureItem(this.name, this.icone, {required this.onClick});
+  const _FeatureItem(this.name, this.icone, {required this.onClick});
 
   @override
   Widget build(BuildContext context) {
